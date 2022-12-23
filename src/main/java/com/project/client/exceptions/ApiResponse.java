@@ -15,21 +15,21 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class ApiResponse {
-  private HttpStatus status;
+    private HttpStatus status;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-  private LocalDateTime timestamp;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private LocalDateTime timestamp;
 
-  private String message;
-  private String debugMessage;
-  private List<ApiValidationError> subErrors;
+    private String message;
+    private String debugMessage;
+    private List<ApiValidationError> subErrors;
 
-  public ApiResponse() {
-    timestamp = LocalDateTime.now();
-  }
+    public ApiResponse() {
+        timestamp = LocalDateTime.now();
+    }
 
-  public ApiResponse(HttpStatus status) {
-    this();
-    this.status = status;
-  }
+    public ApiResponse(HttpStatus status) {
+        this();
+        this.status = status;
+    }
 }

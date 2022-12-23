@@ -10,8 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-  private String id;
-  private String name;
-  private Double price;
-  private Boolean availability;
+    private String id;
+    private String name;
+    private Double price;
+    private Boolean availability;
 }

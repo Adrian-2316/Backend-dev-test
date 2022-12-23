@@ -19,39 +19,39 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-  /**
-   * Handles IOException. Thrown when no entity is found.
-   *
-   * @param ex IOException.
-   * @return ResponseEntity - ResponseEntity object.
-   */
-  @ExceptionHandler(IOException.class)
-  protected ResponseEntity<Object> handleIOException(IOException ex) {
-    ApiResponse apiResponse = new ApiResponse(NOT_FOUND);
-    apiResponse.setMessage(ex.getMessage());
-    log.info(ex.getMessage());
-    return buildResponseEntity(apiResponse);
-  }
-  /**
-   * Handles HttpResponseException. Thrown when no entity is found.
-   *
-   * @param ex HttpResponseException.
-   * @return ResponseEntity - ResponseEntity object.
-   */
-  @ExceptionHandler(HttpResponseException.class)
-  protected ResponseEntity<Object> handleHttpResponseException(HttpResponseException ex) {
-    ApiResponse apiResponse = new ApiResponse(INTERNAL_SERVER_ERROR);
-    apiResponse.setMessage(ex.getMessage());
-    return buildResponseEntity(apiResponse);
-  }
+    /**
+     * Handles IOException. Thrown when no entity is found.
+     *
+     * @param ex IOException.
+     * @return ResponseEntity - ResponseEntity object.
+     */
+    @ExceptionHandler(IOException.class)
+    protected ResponseEntity<Object> handleIOException(IOException ex) {
+        ApiResponse apiResponse = new ApiResponse(NOT_FOUND);
+        apiResponse.setMessage(ex.getMessage());
+        return buildResponseEntity(apiResponse);
+    }
 
-  /**
-   * Generic method to build ResponseEntity responses.
-   *
-   * @param apiResponse - ApiException.
-   * @return ResponseEntity - ResponseEntity object.
-   */
-  private ResponseEntity<Object> buildResponseEntity(ApiResponse apiResponse) {
-    return new ResponseEntity<>(apiResponse, apiResponse.getStatus());
-  }
+    /**
+     * Handles HttpResponseException. Thrown when no entity is found.
+     *
+     * @param ex HttpResponseException.
+     * @return ResponseEntity - ResponseEntity object.
+     */
+    @ExceptionHandler(HttpResponseException.class)
+    protected ResponseEntity<Object> handleHttpResponseException(HttpResponseException ex) {
+        ApiResponse apiResponse = new ApiResponse(INTERNAL_SERVER_ERROR);
+        apiResponse.setMessage(ex.getMessage());
+        return buildResponseEntity(apiResponse);
+    }
+
+    /**
+     * Generic method to build ResponseEntity responses.
+     *
+     * @param apiResponse - ApiException.
+     * @return ResponseEntity - ResponseEntity object.
+     */
+    private ResponseEntity<Object> buildResponseEntity(ApiResponse apiResponse) {
+        return new ResponseEntity<>(apiResponse, apiResponse.getStatus());
+    }
 }

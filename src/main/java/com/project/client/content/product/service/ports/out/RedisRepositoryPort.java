@@ -7,6 +7,8 @@ import java.util.List;
 public interface RedisRepositoryPort {
 
   void saveToRedis(String key, List<Product> productDetails);
+  void setExToRedis(String key, int exception);
 
   List<Product> getFromRedis(String id);
+  Integer getExFromRedis(String id);
 }
